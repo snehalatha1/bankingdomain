@@ -34,8 +34,8 @@ pipeline {
 
       stage('Push Image to DockerHub'){
                steps {
-                   withCredentials([string(credentialsId: 'dhid', variable: 'dockerhubp')]){
-			   sh 'docker login -u snehalatha15 -p "echo ${dockerhubp}"'
+                   withCredentials([string(credentialsId: 'dock', variable: 'dhp')]){
+			   sh 'docker login -u snehalatha15 -p "echo ${dhp}"'
 		   }
                    sh 'docker push snehalatha15/finance:latest'
 
