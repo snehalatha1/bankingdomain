@@ -27,7 +27,7 @@ pipeline {
 
      stage('Docker Image Creation'){
           steps {
-                 sh 'docker build -t snehalatha15/bankingdomainapp:latest  .'
+                 sh 'docker build -t snehalatha15/finance:latest  .'
                       }
                    }
 
@@ -36,7 +36,8 @@ pipeline {
                steps {
                    withCredentials([usernamePassword(credentialsId: 'dd', passwordVariable: 'dhubpswd', usernameVariable: 'dhubuser')]) {
         	   sh "docker login -u ${env.dhubuser} -p ${env.dhubpswd}"
-                   sh 'docker push snehalatha15/bankingdomainapp:latest'
+                   }
+                   sh 'docker push snehalatha15/finance:latest'
 
 	            }
                  }
